@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require('express');
+const colors = require('colors');
 const dotenv = require('dotenv').config();
 const { errorHandler } = require('./middleware/errorMiddleware.cjs');
+const connectDB = require('./config/db.cjs');
 
 const port = process.env.PORT || 5000;
+
+connectDB();
+
 const app = express();
 
 // ! Middleware //
