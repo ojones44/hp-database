@@ -1,4 +1,4 @@
-import machines from '../data/machines';
+import machines from '../../data/machines';
 import MachineCard from '../components/MachineCard';
 
 function Home() {

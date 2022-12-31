@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 // * Asset Imports
 import NotificationImportantIcon from '@mui/icons-material/NotificationImportant';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import oJonesImg from '../assets/oliver-jones.jpg';
-import rPatrickImg from '../assets/rikie-patrick.jpg';
+import oJonesImg from '../../assets/oliver-jones.jpg';
+import rPatrickImg from '../../assets/rikie-patrick.jpg';
 
 const isOnline = true;
 

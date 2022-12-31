@@ -1,13 +1,13 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Scheduler from './pages/Scheduler';
-import Maintenance from './pages/Maintenance';
-import MachineCardSingle from './pages/MachineCardSingle';
-import NotFound from './pages/NotFound';
-import Footer from './pages/Footer';
+import Navbar from './frontend/components/Navbar';
+import Home from './frontend/pages/Home';
+import Login from './frontend/pages/Login';
+import Dashboard from './frontend/pages/Dashboard';
+import Scheduler from './frontend/pages/Scheduler';
+import Maintenance from './frontend/pages/Maintenance';
+import MachineCardSingle from './frontend/pages/MachineCardSingle';
+import NotFound from './frontend/pages/NotFound';
+import Footer from './frontend/pages/Footer';
 
 export function App() {
   return (
