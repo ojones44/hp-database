@@ -1,16 +1,19 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const mongoose = require('mongoose');
 
+// Destructuring mongooses Schema method into a const //
 const { Schema } = mongoose;
 
+// Creating a const that holds info for required string //
 const requiredString = { type: String, required: true };
 
+// Create new database schema using mongoose.Schema //
 const userSchema = new Schema(
   {
     employee: {
-      employee_fname: requiredString,
-      // employee_lname: requiredString,
-      // eployee_id: requiredString,
+      f_name: requiredString,
+      // l_name: requiredString,
+      // employee_id: requiredString,
       // email: requiredString,
       // job_role: String,
       // department: String,
@@ -24,4 +27,8 @@ const userSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model('User', userSchema);
+// Create mongoose model from creating Schema //
+// Given name in first argument is always singular //
+const userSchemaModel = mongoose.model('User', userSchema);
+
+module.exports = userSchemaModel;

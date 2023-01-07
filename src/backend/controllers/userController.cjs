@@ -5,18 +5,18 @@ const User = require('../models/userModel.cjs');
 // ! This file is entered from userRoutes.cjs and will //
 // ! call a specific function //
 
-// * @description   Get users
-// * @route         GET /api/users
-// * @access        Private
+// @description   Get users
+// @route         GET /api/users
+// @access        Private
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find();
 
   res.status(200).json(users);
 });
 
-// * @description   Create user
-// * @route         POST /api/users
-// * @access        Private
+// @description   Create user
+// @route         POST /api/users
+// @access        Private
 const createUser = asyncHandler(async (req, res) => {
   if (!req.body) {
     res.status(400);
@@ -30,9 +30,9 @@ const createUser = asyncHandler(async (req, res) => {
   res.status(200).json(user);
 });
 
-// * @description   Update user
-// * @route         PUT /api/users/:id
-// * @access        Private
+// @description   Update user
+// @route         PUT /api/users/:id
+// @access        Private
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
@@ -54,9 +54,9 @@ const updateUser = asyncHandler(async (req, res) => {
   res.status(200).json(updatedUser);
 });
 
-// * @description   Delete user
-// * @route         DELETE /api/users/:id
-// * @access        Private
+// @description   Delete user
+// @route         DELETE /api/users/:id
+// @access        Private
 const deleteUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
@@ -76,7 +76,7 @@ const deleteUser = asyncHandler(async (req, res) => {
   res.status(200).json({ Message: `Deleted ${user.id}` });
 });
 
-// * Exporting functions out of file //
+// Exporting functions out of file //
 module.exports = {
   getUsers,
   createUser,

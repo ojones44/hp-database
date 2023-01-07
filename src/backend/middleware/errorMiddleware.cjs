@@ -1,5 +1,11 @@
-// ! Middleware are just functions that execute during //
-// ! a request repsonse cycle //
+// ! Middleware are just methods/functions/operations that //
+// ! execute between processing the Request and sending the Repsonse //
+
+// ! The middleware acts like a general reciever for every request //
+// ! and can perform tasks such as parsing request data, authenticating //
+// ! users, and modifying the response. //
+
+// ! This is what allows you to access and use req.body //
 
 const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode ? res.statusCode : 500;

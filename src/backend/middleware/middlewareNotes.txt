@@ -1,0 +1,136 @@
+Here is the explanation that should clear doubts on express.json() 
+and express.urlencoded() and the use of body-parser. 
+
+* What is Middleware? It is those methods/functions/operations that 
+are called BETWEEN processing the Request and sending the Response 
+in your application method.
+
+* When talking about express.json() and express.urlencoded() think 
+specifically about POST requests (i.e. the .post request object) 
+and PUT Requests (i.e. the .put request object)
+
+* You DO NOT NEED express.json() and express.urlencoded() for 
+GET Requests or DELETE Requests.
+
+* You NEED express.json() and express.urlencoded() for POST and PUT 
+requests, because in both these requests you are sending 
+data (in the form of some data object) to the server and you are
+asking the server to accept or store that data (object), 
+which is enclosed in the body (i.e. req.body) of that (POST or PUT) 
+Request
+
+* Express provides you with middleware to deal with the (incoming) data
+(object) in the body of the request.
+
+    a. express.json() is a method inbuilt in express to recognize 
+    the incoming Request Object as a JSON Object. This method is 
+    called as a middleware in your application using the code: 
+    app.use(express.json());
+
+    b. express.urlencoded() is a method inbuilt in express to recognize 
+    the incoming Request Object as strings or arrays. Just like 
+    express.json() converts request body to JSON, it also carries 
+    out some other functionalities like: converting HTML form-data to 
+    JSON etc. This method is called as a middleware in your 
+    application using the code: app.use(express.urlencoded());
+
+ALTERNATIVELY, I recommend using body-parser (it is an NPM package)
+to do the same thing. It is developed by the same peeps who built 
+express and is designed to work with express. body-parser used to be 
+part of express. Think of body-parser specifically for POST Requests 
+(i.e. the .post request object) and/or PUT Requests 
+(i.e. the .put request object).
+
+
+So the difference is express.json() is a body parser for post 
+requests except a html post form and express.urlencoded({extended: false}) 
+is a body parser for html post form.
+
+// ------------------------------------------------------------ //
+
+Difference between express.get() and express.Router().get():
+
+express.Router() is a function in the Express.js web framework that 
+creates an instance of a Router, which is a middleware and routing 
+system for Express. The Router class has methods for routing HTTP 
+requests, such as get(), post(), put(), delete(), etc. These methods 
+behave in the same way as the corresponding methods in the app object 
+(app.get(), app.post(), etc.), but they are used to define routes on 
+the Router instance, rather than on the main app.
+
+// ------------------------------------------------------------ //
+
+app.use() is a method in the Express.js web framework that allows 
+you to define middleware functions that are executed when a request 
+is made to your app. Middleware functions are functions that have 
+access to the request and response objects, and can perform tasks 
+such as parsing request data, authenticating users, and modifying 
+the response.
+
+app.use(path, middleware function) is called every time a 
+request is sent to the server. 
+
+You can also use app.use() without specifying the request URL. 
+In such a case what it does is, it gets executed every time no 
+matter what URL's been hit.
+
+// ------------------------------------------------------------ //
+
+What is a JavaScript Promise?
+
+A Promise in JavaScript is used to execute and manage asynchronous 
+operations. It is an alternative to traditional callback-based 
+approaches.
+
+A simple example of a Promise:
+
+fetch(url)
+  .then((res) => filterData(res))
+  .then(saveData())
+  .catch(displayError)
+;
+
+
+Asynchronous code
+   * Avoids running in sequence bottleneck
+   * When executing a function, don’t wait for it to finish before 
+     running the next line.
+
+
+
+// ------------------------------------------------------------ //
+
+Difference between Synchronous and Asynchronous Transmission
+
+// ------------------------------------------------------------ //
+
+What actually is JavaScript?
+
+JavaScript is a programming language that is commonly used to build 
+web applications. It is a high-level, dynamically typed language that 
+is interpreted by web browsers. JavaScript is a language that is mainly 
+used to write client-side scripts that are run in the browser, but it 
+can also be used on the server-side through runtime environments like 
+Node.js.
+
+JavaScript is a popular language that is widely used in the development 
+of web-based applications. It has a large and active developer 
+community, and it is constantly evolving with new features and 
+improvements
+
+JS is a synchronous, single call stack language.
+
+// ------------------------------------------------------------ //
+
+What actually is a callback function?
+
+In JavaScript, a callback function is a function that is passed as an 
+argument to another function, and is executed after some kind of event. 
+Callback functions are a way to make sure certain code doesn't execute 
+until other code has already finished executing.
+
+Callback functions are often used in asynchronous programming, 
+where they are used to continue the execution of a program after 
+an asynchronous operation has completed. 
+
+// ------------------------------------------------------------ //
