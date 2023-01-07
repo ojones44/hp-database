@@ -8,6 +8,7 @@ This setup includes:
 
 # References
 
-* https://markus.oberlehner.net/blog/using-testing-library-jest-dom-with-vitest/
 * https://testing-library.com/docs/queries/about#priority
 * https://kentcdodds.com/blog/common-mistakes-with-react-testing-library
+
+Pipeline Software
