@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const express = require('express');
+const express = require("express");
 
 // Create instance of the express Router method //
 const router = express.Router();
@@ -7,10 +7,12 @@ const router = express.Router();
 // Import HTTP request response handler functions //
 const {
   getUsers,
-  createUser,
+  getMe,
+  registerUser,
+  loginUser,
   updateUser,
   deleteUser,
-} = require('../controllers/userController.cjs');
+} = require("../controllers/userController.cjs");
 
 // This file is entered from server.cjs when a filepath is hit //
 // It will then jump to the relevant router, and call one of the //
@@ -26,15 +28,21 @@ const {
 // ? router.route('/:id').put(updateUser).delete(deleteUser);
 
 // Calls the getUsers function inside userController.cjs //
-router.get('/', getUsers);
+router.get("/", getUsers);
 
-// Calls the createUser function inside userController.cjs //
-router.post('/', createUser);
+// Calls the getMe function inside userController.cjs //
+router.get("/me", getMe);
+
+// Calls the registerUser function inside userController.cjs //
+router.post("/register", registerUser);
+
+// Calls the loginUser function inside userController.cjs //
+router.post("/login", loginUser);
 
 // Calls the updateUser function inside userController.cjs //
-router.put('/:id', updateUser);
+router.put("/:id", updateUser);
 
 // Calls the deleteUser function inside userController.cjs //
-router.delete('/:id', deleteUser);
+router.delete("/:id", deleteUser);
 
 module.exports = router;

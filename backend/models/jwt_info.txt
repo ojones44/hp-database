@@ -1,0 +1,16 @@
+JWT = JSON Web Token
+
+JWT's are used for securing API's.
+
+It is an open standard used to share security information between 
+two parties — a client and a server. Each JWT contains encoded JSON 
+objects, including a set of claims. JWTs are signed using a 
+cryptographic algorithm to ensure that the claims cannot be altered 
+after the token is issued.
+
+What are tokens? To put it simply, a token is a string of data that 
+represents something else, such as an identity. In the case of 
+authentication, a non-JWT based token is a string of characters 
+that allow the receiver to validate the sender’s identity. 
+The important distinction here is lack of meaning within the 
+characters themselves. 

@@ -47,6 +47,28 @@ After this has happened, the TCP connection is shut down.
 
 // --------------------------------------------------------- //
 
+HTTP is a stateless protocol - sort of. Not quite in the newest version.
+
+HTTP is the transport protocol between the server and the client
+
+HTTP is called a stateless protocol because each command is executed 
+independently, without any knowledge of the commands that came 
+before it.  
+
+This means that when using HTTP the end point does not "remember" 
+things (such as who you are). It has no state. This is in contrast 
+to a desktop application - if you have a form and you go to a 
+different form, then go back, the state has been retained 
+(so long as you haven't shut down the application).
+
+Normally, in order to maintain state in web applications, 
+one uses cookies.
+
+Technically the TCP holds some sort of state
+
+
+// --------------------------------------------------------- //
+
 Express app.listen() explanation:
 
 In a nutshell, the Express app.listen() method creates an http server 

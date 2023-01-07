@@ -1,33 +1,52 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const asyncHandler = require('express-async-handler');
-const User = require('../models/userModel.cjs');
+const asyncHandler = require("express-async-handler");
+const User = require("../models/userModel.cjs");
+
+const httpStatus = {
+  ok: 200,
+  bad: 400,
+};
 
 // ! This file is entered from userRoutes.cjs and will //
 // ! call a specific function //
 
-// @description   Get users
+// @description   Get users list
 // @route         GET /api/users
 // @access        Private
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find();
 
-  res.status(200).json(users);
+  res.status(httpStatus.ok).json(users);
 });
 
-// @description   Create user
-// @route         POST /api/users
-// @access        Private
-const createUser = asyncHandler(async (req, res) => {
+// @description   Get user data
+// @route         GET /api/users/me
+// @access        Public
+const getMe = asyncHandler(async (req, res) => {
+  res.json({ message: "Get user, me" });
+});
+
+// @description   Register new user
+// @route         POST /api/users/register
+// @access        Public
+const registerUser = asyncHandler(async (req, res) => {
   if (!req.body) {
-    res.status(400);
-    throw new Error('Please add a text field');
+    res.status(httpStatus.bad);
+    throw new Error("Please add a text field");
   }
 
   const user = await User.create({
     employee: req.body,
   });
 
-  res.status(200).json(user);
+  res.status(httpStatus.ok).json(user);
+});
+
+// @description   Authenticate new user
+// @route         POST /api/users/login
+// @access        Public
+const loginUser = asyncHandler(async (req, res) => {
+  res.json({ message: "Authenticate user" });
 });
 
 // @description   Update user
@@ -37,8 +56,8 @@ const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
   if (!user) {
-    res.status(400);
-    throw new Error('User not found');
+    res.status(httpStatus.bad);
+    throw new Error("User not found");
   }
 
   const updatedUser = await User.findByIdAndUpdate(
@@ -51,7 +70,7 @@ const updateUser = asyncHandler(async (req, res) => {
     }
   );
 
-  res.status(200).json(updatedUser);
+  res.status(httpStatus.ok).json(updatedUser);
 });
 
 // @description   Delete user
@@ -61,25 +80,27 @@ const deleteUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
   if (!user) {
-    res.status(400);
-    throw new Error('User not found');
+    res.status(httpStatus.bad);
+    throw new Error("User not found");
   }
 
   User.deleteOne({ _id: user.id })
     .then(() => {
-      console.log('Data deleted'); // Success
+      console.log("Data deleted"); // Success
     })
     .catch((error) => {
       console.log(error); // Failure
     });
 
-  res.status(200).json({ Message: `Deleted ${user.id}` });
+  res.status(httpStatus.ok).json({ Message: `Deleted ${user.id}` });
 });
 
 // Exporting functions out of file //
 module.exports = {
   getUsers,
-  createUser,
+  getMe,
+  registerUser,
+  loginUser,
   updateUser,
   deleteUser,
 };

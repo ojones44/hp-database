@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const express = require('express');
-const colors = require('colors');
-const dotenv = require('dotenv').config();
-const { errorHandler } = require('./middleware/errorMiddleware.cjs');
-const connectDB = require('./config/db.cjs');
-const userRoutes = require('./routes/userRoutes.cjs');
+const express = require("express");
+const colors = require("colors");
+const dotenv = require("dotenv").config();
+const { errorHandler } = require("./middleware/errorMiddleware.cjs");
+const connectDB = require("./config/db.cjs");
+const userRoutes = require("./routes/userRoutes.cjs");
+// TODO const machineRoutes = require("./routes/machineRoutes.cjs");
+// TODO const componentRoutes = require("./routes/componentRoutes.cjs");
 
 // ? Include CORS?
 // * const cors = require('cors');
@@ -16,7 +18,9 @@ const userRoutes = require('./routes/userRoutes.cjs');
 // ? server's responses. //
 
 const port = process.env.PORT || 5000;
-const userEndpoint = '/api/users';
+const userEndpoint = "/api/users";
+// TODO const machineEndpoint = "/api/machines";
+// TODO const componentsEndpoint = "/api/components";
 
 // Calling our custom imported function module //
 connectDB();
@@ -41,6 +45,8 @@ app.use(express.urlencoded({ extended: false }));
 // userRoutes will handle all requests to the userEndpoint path //
 // app.use() mounts the path inside userEndpoint to userRoutes //
 app.use(userEndpoint, userRoutes);
+// TODO app.use(machineEndpoint, machineRoutes);
+// TODO app.use(componentsEndpoint, componentRoutes);
 
 // Custom function will overwrite default express error handler //
 app.use(errorHandler);

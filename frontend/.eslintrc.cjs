@@ -19,7 +19,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: ['./tsconfig.json'],
-    // Added below which makes the parser resolve the project configuration relative to .eslintrc.js
+    // Added below which makes the parser resolve the project configuration relative to .eslintrc.cjs
     tsconfigRootDir: __dirname,
   },
   plugins: ['react', '@typescript-eslint', 'prettier', 'tailwindcss'],
