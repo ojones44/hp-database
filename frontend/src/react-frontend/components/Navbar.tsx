@@ -7,7 +7,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import oJonesImg from '../../assets/oliver-jones.jpg';
 import rPatrickImg from '../../assets/rikie-patrick.jpg';
 
-const isOnline = true;
+const isOnline = false;
 
 function AvatarWithDropdown() {
   return (
