@@ -3,6 +3,7 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel.cjs");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const _ = require("lodash");
 
 // This file is entered from userRoutes.cjs and will //
 // call a specific function //
@@ -19,7 +20,7 @@ const httpStatus = {
 
 // Generate JWT
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 };
 
 // !----------------------------------------------------------------------- //
@@ -79,8 +80,8 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // Create user
   const newUser = await User.create({
-    fName,
-    lName,
+    fName: _.capitalize(fName),
+    lName: _.capitalize(lName),
     employeeID,
     stampNo,
     email,

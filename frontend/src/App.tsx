@@ -11,9 +11,11 @@ import NotFound from './react-frontend/pages/NotFound';
 import Footer from './react-frontend/pages/Footer';
 
 export function App() {
+  const isLoggedIn = true;
+
   return (
     <>
-      <Navbar />
+      {isLoggedIn && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

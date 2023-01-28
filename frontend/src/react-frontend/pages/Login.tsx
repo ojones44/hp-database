@@ -21,6 +21,8 @@ function Login() {
   };
 
   const onSubmit = (e) => {
+    console.log(e.target.email.value, e.target.password.value);
+
     e.preventDefault();
   };
 
@@ -49,14 +51,12 @@ function Login() {
               value={password}
               onChange={onChange}
             />
-            <Link to="/">
-              <button
-                type="submit"
-                className="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-green-600 focus:outline-none my-1"
-              >
-                To the database <LoginIcon />
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className="w-full text-center py-3 rounded bg-success text-white hover:bg-secondary focus:outline-none my-1"
+            >
+              To the database <LoginIcon />
+            </button>
           </div>
 
           <div className="text-grey-dark mt-6">

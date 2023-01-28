@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
+const cors = require("cors");
 const colors = require("colors");
 const dotenv = require("dotenv").config();
 const { errorHandler } = require("./middleware/errorMiddleware.cjs");
@@ -7,15 +8,6 @@ const connectDB = require("./config/db.cjs");
 const userRoutes = require("./routes/userRoutes.cjs");
 // TODO const machineRoutes = require("./routes/machineRoutes.cjs");
 // TODO const componentRoutes = require("./routes/componentRoutes.cjs");
-
-// ? Include CORS?
-// * const cors = require('cors');
-// * app.use(cors());
-
-// ? The cors library is a Node.js middleware that allows //
-// ? you to enable CORS in your Express.js server with ease //
-// ? It works by adding the appropriate CORS headers to the //
-// ? server's responses. //
 
 const port = process.env.PORT || 5000;
 const userEndpoint = "/api/users";
@@ -28,6 +20,13 @@ connectDB();
 // Creating instance of express modeule to tap into its //
 // methods //
 const app = express();
+
+// Allow client side requests to server from this port
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 // Middleware //
 // These are needed between Req & Res cycle //
