@@ -2,9 +2,9 @@ function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="footer footer-center p-10 text-primary-content">
+    <footer className='footer footer-center p-10'>
       <div>
-        <p className="font-bold">
+        <p className='font-bold'>
           HP300 Database <br />
         </p>
         <p>Copyright © {year} - All rights reserved</p>

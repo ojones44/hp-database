@@ -4,7 +4,8 @@
   "description": "Module for starting both servers",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"cd backend && npm run server\" \"cd frontend && npm run dev\" "
+    "dev": "concurrently \"cd backend && npm run server\" \"cd frontend && npm run dev\" ",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",

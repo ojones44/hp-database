@@ -26,5 +26,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 0,
     'no-console': 'off',
+    'no-underscore-dangle': 0,
+    'jsx-quotes': ['error', 'prefer-single'],
   },
 };

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // * This file is used to connect to MongoDB //
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // ? Mongoose is an Object Data Modeling (ODM) library for //
 // ? MongoDB and Node.js. It manages relationships between //

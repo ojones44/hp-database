@@ -1,21 +1,21 @@
-import machines from '../../data/machines';
-import MachineCard from '../components/MachineCard';
+// import { useEffect, useState } from 'react';
+import useFetch from '../../hooks/useFetch';
+import MachineList from '../components/MachineList';
 
 function Home() {
+  const {
+    data: machines,
+    isPending,
+    error,
+  } = useFetch('http://localhost:3002/api/machines');
+
   return (
-    <div className="flex flex-wrap items-center justify-center h-screen">
-      {machines.map((machine) => {
-        return (
-          <MachineCard
-            key={machine.serial_no}
-            wc={machine.work_center}
-            manufacturer={machine.manufacturer}
-            model={machine.model}
-            serial={machine.serial_no}
-          />
-        );
-      })}
-    </div>
+    <>
+      <h1 className='text-4xl text-center font-bold text-primary m-4'>
+        HP300 Database
+      </h1>
+      <MachineList />
+    </>
   );
 }
 

@@ -1,38 +1,26 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const { requiredString, requiredUniqueString } = require("./modelTypes.cjs");
 const mongoose = require("mongoose");
 
 // Destructuring mongooses Schema method into a const //
 const { Schema } = mongoose;
 
-// Creating a const that holds info for required strings //
-const requiredString = {
-  type: String,
-  required: [true, "Required field..."],
-};
-const requiredUniqueString = {
-  type: String,
-  required: [true, "Please input..."],
-  unique: true,
-};
-
 // Create new database schema using mongoose.Schema //
 const userSchema = new Schema(
   {
     employee: {
-      f_name: requiredString,
-      l_name: requiredString,
-      employee_id: requiredUniqueString,
+      fName: requiredString,
+      lName: requiredString,
+      employeeId: requiredUniqueString,
       email: requiredUniqueString,
-      // job_role: String,
+      // jobRole: String,
       // department: String,
       // username: requiredString,
       // password: requiredString,
       // avatar: String,
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 // Create mongoose model from creating Schema //
