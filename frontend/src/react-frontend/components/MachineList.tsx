@@ -40,10 +40,7 @@ function MachineList() {
           Add Machine
         </button>
       </div>
-      <AddMachineModal
-        open={isOpen}
-        setIsOpen={setIsOpen}
-      />
+      <AddMachineModal open={isOpen} setIsOpen={setIsOpen} />
     </>
   );
 }

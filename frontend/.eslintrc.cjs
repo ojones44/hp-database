@@ -12,7 +12,7 @@ module.exports = {
     // 'plugin:tailwindcss/recommended',
     'plugin:prettier/recommended',
   ],
-  ignorePatterns: ['**/*.html'],
+  ignorePatterns: ['/*.html'],
   overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {

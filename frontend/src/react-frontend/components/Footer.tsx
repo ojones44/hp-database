@@ -2,7 +2,7 @@ function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="footer footer-center p-10 text-black">
+    <footer className='footer footer-center p-10 text-black'>
       <div>
         <p className='font-bold'>
           HP300 Database <br />

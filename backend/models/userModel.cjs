@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { requiredString, requiredUniqueString } = require("./modelTypes.cjs");
 const mongoose = require("mongoose");
+const {
+  requiredString,
+  requiredUniqueString,
+  requiredUniqueNumber,
+} = require("./modelTypes.cjs");
 
 // Destructuring mongooses Schema method into a const //
 const { Schema } = mongoose;
@@ -14,7 +18,7 @@ const userData = {
   password: requiredString,
   jobRole: requiredString,
   department: requiredString,
-  avatar: optionalString,
+  avatar: String,
 };
 
 // Create new database schema using mongoose.Schema //

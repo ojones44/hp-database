@@ -10,6 +10,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import Loading from '../../assets/loading.svg';
 
 // * Library Imports
 import { User, UI_REGEX } from '../../models/userValidation';
@@ -19,18 +20,18 @@ const API_REGISTER_URL = 'http://localhost:3002/api/users/register';
 
 function ErrorMessage({ msg }) {
   return (
-    <div className="error-message" role="alert">
-      <strong className="font-bold">Oops! 🙈 </strong>
-      <span className="block sm:inline">{msg}</span>
+    <div className='error-message' role='alert'>
+      <strong className='font-bold'>Oops! 🙈 </strong>
+      <span className='block sm:inline'>{msg}</span>
     </div>
   );
 }
 
 function SuccessMessage() {
   return (
-    <div className="success-message" role="alert">
-      <strong className="font-bold">Success! 😀 </strong>
-      <span className="block sm:inline">
+    <div className='success-message' role='alert'>
+      <strong className='font-bold'>Success! 😀 </strong>
+      <span className='block sm:inline'>
         Passwords valid and matched <CheckIcon />
       </span>
     </div>
@@ -39,9 +40,9 @@ function SuccessMessage() {
 
 function InfoMessage() {
   return (
-    <div className="info-message" role="alert">
+    <div className='info-message' role='alert'>
       <InfoIcon />
-      <span className="block sm:inline pl-4">
+      <span className='block sm:inline pl-4'>
         You may only register if you are an Ipeco employee.
       </span>
     </div>
@@ -140,14 +141,11 @@ function Register() {
         })
         .then((newUser) => {
           console.log(newUser);
-          navigate('/');
+          navigate('/login');
         })
         .catch((error) => {
           setErrorMessage(error.message);
         });
-
-      // console.log(formData);
-      // resetState();
     }
 
     e.preventDefault();
@@ -155,112 +153,112 @@ function Register() {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="mt-10 max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
-        <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-          <h1 className="mb-8 text-3xl text-center">Register Employee</h1>
+      <div className='mt-10 max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2'>
+        <div className='bg-white px-6 py-8 rounded shadow-md text-black w-full'>
+          <h1 className='mb-8 text-3xl text-center'>Register Employee</h1>
 
           {InfoMessage()}
 
           <input
-            type="text"
-            className="input-area capitalize"
-            id="fName"
-            name="fName"
-            placeholder="First Name"
+            type='text'
+            className='input-area capitalize'
+            id='fName'
+            name='fName'
+            placeholder='First Name'
             value={fName}
             onChange={onChange}
             required
-            autoComplete="off"
+            // autoComplete='off'
           />
 
           <input
-            type="text"
-            className="input-area capitalize"
-            id="lName"
-            name="lName"
-            placeholder="Last Name"
+            type='text'
+            className='input-area capitalize'
+            id='lName'
+            name='lName'
+            placeholder='Last Name'
             value={lName}
             onChange={onChange}
             required
-            autoComplete="off"
+            // autoComplete='off'
           />
 
           <input
-            type="number"
-            className="input-area"
-            id="employeeID"
-            name="employeeID"
-            placeholder="Employee ID Number"
+            type='number'
+            className='input-area'
+            id='employeeID'
+            name='employeeID'
+            placeholder='Employee ID Number'
             value={employeeID}
             onChange={onChange}
             required
-            autoComplete="off"
+            // autoComplete='off'
           />
 
           <input
-            type="number"
-            className="input-area"
-            id="stampNo"
-            name="stampNo"
-            placeholder="Stamp Number"
+            type='number'
+            className='input-area'
+            id='stampNo'
+            name='stampNo'
+            placeholder='Stamp Number'
             value={stampNo}
             onChange={onChange}
             required
-            autoComplete="off"
+            // autoComplete='off'
           />
 
           <select
-            className="input-area"
-            id="jobRole"
-            name="jobRole"
-            placeholder="Select Job Role"
+            className='input-area'
+            id='jobRole'
+            name='jobRole'
+            placeholder='Select Job Role'
             value={jobRole}
             onChange={onChange}
             required
           >
-            <option value="" disabled>
+            <option value='' disabled>
               Select your job role
             </option>
-            <option value="Operator">Operator</option>
-            <option value="Setter/Operator">Setter/Operator</option>
-            <option value="Programmer">Programmer</option>
-            <option value="Production Controller">Production Controller</option>
-            <option value="Supervisor">Supervisor</option>
-            <option value="Manager">Manager</option>
+            <option value='Operator'>Operator</option>
+            <option value='Setter/Operator'>Setter/Operator</option>
+            <option value='Programmer'>Programmer</option>
+            <option value='Production Controller'>Production Controller</option>
+            <option value='Supervisor'>Supervisor</option>
+            <option value='Manager'>Manager</option>
           </select>
 
           <select
-            className="input-area"
-            id="department"
-            name="department"
-            placeholder="Select Department"
+            className='input-area'
+            id='department'
+            name='department'
+            placeholder='Select Department'
             value={department}
             onChange={onChange}
             required
           >
-            <option value="" disabled>
+            <option value='' disabled>
               Select your department
             </option>
-            <option value="Team 1">Team 1</option>
-            <option value="Team 2">Team 2</option>
-            <option value="Team 3">Team 3</option>
-            <option value="Team 4">Team 4</option>
-            <option value="Production Control">Production Control</option>
+            <option value='Team 1'>Team 1</option>
+            <option value='Team 2'>Team 2</option>
+            <option value='Team 3'>Team 3</option>
+            <option value='Team 4'>Team 4</option>
+            <option value='Production Control'>Production Control</option>
           </select>
 
           <input
-            type="email"
-            className="input-area"
-            id="email"
-            name="email"
-            placeholder="Company email (e.g. jdoe@ipeco.com)"
+            type='email'
+            className='input-area'
+            id='email'
+            name='email'
+            placeholder='Company email (e.g. jdoe@ipeco.com)'
             value={email}
             onChange={onChange}
             required
-            autoComplete="off"
+            // autoComplete='off'
           />
 
-          <label htmlFor="password" className="flex">
+          <label htmlFor='password' className='flex'>
             <input
               type={showPassword ? 'text' : 'password'}
               className={
@@ -268,31 +266,31 @@ function Register() {
                   ? 'input-area adjusted password'
                   : 'input-area password'
               }
-              id="password"
-              name="password"
-              placeholder="Password"
+              id='password'
+              name='password'
+              placeholder='Password'
               value={password}
               onChange={onChange}
               onFocus={() => setPasswordMsg(true)}
               onBlur={() => setPasswordMsg(false)}
               required
-              autoComplete="off"
+              // autoComplete='off'
             />
-            {showPassword ? (
-              <VisibilityOffIcon
-                style={{ color: 'red' }}
-                onClick={() => setShowPassword(!showPassword)}
-              />
-            ) : (
-              <VisibilityIcon
-                style={{ color: 'green' }}
-                onClick={() => setShowPassword(!showPassword)}
-              />
-            )}
           </label>
+          {showPassword ? (
+            <VisibilityOffIcon
+              style={{ color: 'red' }}
+              onClick={() => setShowPassword(!showPassword)}
+            />
+          ) : (
+            <VisibilityIcon
+              style={{ color: 'green' }}
+              onClick={() => setShowPassword(!showPassword)}
+            />
+          )}
 
           {passwordMsg && (
-            <div className="validation-message">
+            <div className='validation-message'>
               {validPassword ? (
                 <small>
                   Password valid <CheckIcon style={{ color: 'green' }} />
@@ -312,19 +310,19 @@ function Register() {
           <input
             type={showPassword ? 'text' : 'password'}
             className={passwordMsg ? 'input-area adjusted' : 'input-area'}
-            id="password2"
-            name="password2"
-            placeholder="Confirm Password"
+            id='password2'
+            name='password2'
+            placeholder='Confirm Password'
             value={password2}
             onChange={onChange}
             onFocus={() => setMatchPWMsg(true)}
             onBlur={() => setMatchPWMsg(false)}
             required
-            autoComplete="off"
+            autoComplete='off'
           />
 
           {matchPWMsg && (
-            <div className="validation-message">
+            <div className='validation-message'>
               {passwordMatch ? (
                 <small>
                   Passwords match <CheckIcon style={{ color: 'green' }} />
@@ -345,17 +343,17 @@ function Register() {
           )}
 
           <button
-            type="submit"
-            className="button"
+            type='submit'
+            className='button'
             disabled={!!(!validPassword || !passwordMatch)}
           >
             Create Account <PersonAddIcon />
           </button>
         </div>
 
-        <div className="text-grey-dark mt-6">
+        <div className='text-grey-dark mt-6'>
           Already have an account?{' '}
-          <Link className="link-to" to="/login">
+          <Link className='link-to' to='/login'>
             Log in.
           </Link>
         </div>

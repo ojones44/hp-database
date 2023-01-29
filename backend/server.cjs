@@ -3,7 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const colors = require("colors");
 const dotenv = require("dotenv").config();
-const cors = require("cors");
 const { errorHandler } = require("./middleware/errorMiddleware.cjs");
 const connectDB = require("./config/db.cjs");
 const userRoutes = require("./routes/userRoutes.cjs");
@@ -15,13 +14,6 @@ connectDB();
 // Creating instance of express modeule to tap into its //
 // methods //
 const app = express();
-
-// Allow client side requests to server from this port
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  })
-);
 
 // Middleware //
 // These are needed between Req & Res cycle //
