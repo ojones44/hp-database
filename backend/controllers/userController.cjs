@@ -31,7 +31,20 @@ const generateToken = (id) => {
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find();
 
-  res.status(httpStatus.ok).json(users);
+  let usersArray = [];
+
+  users.forEach((user) => {
+    usersArray.push({
+      name: `${user.fName} ${user.lName}`,
+      employeeID: `${user.employeeID}`,
+      stampNo: `${user.stampNo}`,
+      email: `${user.email}`,
+      role: `${user.jobRole}`,
+      department: `${user.department}`,
+    });
+  });
+
+  res.status(httpStatus.ok).json(usersArray);
 });
 
 // !----------------------------------------------------------------------- //
@@ -53,7 +66,7 @@ const getMe = asyncHandler(async (req, res) => {
 // @description   Register new user
 // @route         POST /api/users/register
 // @access        Public
-const registerUser = asyncHandler(async (req, res) => {
+const registerUser = asyncHandler(async (req, res, next) => {
   const {
     fName,
     lName,
@@ -70,8 +83,18 @@ const registerUser = asyncHandler(async (req, res) => {
   const userExists = await User.findOne({ employeeID: employeeID });
 
   if (userExists) {
+    if (userExists.stampNo === stampNo) {
+      res.status(httpStatus.bad);
+      const error = new Error("Stamp No must be unique");
+      next(error);
+    } else if (userExists.email === email) {
+      res.status(httpStatus.bad);
+      const error = new Error("Email must be unique");
+      next(error);
+    }
     res.status(httpStatus.bad);
-    throw new Error("User already exists, please login");
+    const error = new Error("Employee ID already exists, please login");
+    next(error);
   }
 
   // Hash password
@@ -79,29 +102,35 @@ const registerUser = asyncHandler(async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   // Create user
-  const newUser = await User.create({
-    fName: _.capitalize(fName),
-    lName: _.capitalize(lName),
-    employeeID,
-    stampNo,
-    email,
-    password: hashedPassword,
-    jobRole,
-    department,
-    avatar,
-  });
-
-  if (newUser) {
-    res.status(httpStatus.ok).json({
-      _id: newUser.id,
-      name: `${newUser.fName} ${newUser.lName}`,
-      email: newUser.email,
-      token: generateToken(newUser._id),
-    });
-  } else {
-    res.status(http.bad);
-    throw new Error("Invalid data. User not registered");
-  }
+  await User.create(
+    {
+      fName: _.capitalize(fName),
+      lName: _.capitalize(lName),
+      employeeID,
+      stampNo,
+      email: _.toLower(email),
+      password: hashedPassword,
+      jobRole,
+      department,
+      avatar,
+    },
+    (err, newUser) => {
+      if (err) {
+        res.status(422);
+        const error = new Error(
+          "Invalid data. User not registered. Please check Stamp No, Email and Employee ID are correct."
+        );
+        next(error);
+      } else {
+        res.status(httpStatus.ok).json({
+          _id: newUser.id,
+          name: `${newUser.fName} ${newUser.lName}`,
+          email: newUser.email,
+          token: generateToken(newUser._id),
+        });
+      }
+    }
+  );
 });
 
 // !----------------------------------------------------------------------- //

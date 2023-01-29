@@ -19,7 +19,7 @@ const {
 const { protect } = require("../middleware/authMiddleware.cjs");
 
 // Calls the getUsers function inside userController.cjs //
-router.get("/", getUsers);
+router.get("/", protect, getUsers);
 
 // Calls the getMe function inside userController.cjs //
 router.get("/me", protect, getMe);
