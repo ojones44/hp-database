@@ -7,7 +7,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import oJonesImg from '../../assets/oliver-jones.jpg';
 import rPatrickImg from '../../assets/rikie-patrick.jpg';
 
-const isOnline = true;
+const isOnline = false;
 
 function AvatarWithDropdown() {
   return (
@@ -133,10 +133,10 @@ function Navbar() {
   const notification = true;
 
   return (
-    <div className='navbar bg-primary text-primary-content'>
-      <div className='navbar-start'>
-        <div className='dropdown'>
-          <label tabIndex={0} className='btn btn-ghost lg:hidden'>
+    <div className="navbar bg-primary text-white">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='h-5 w-5'
@@ -178,8 +178,11 @@ function Navbar() {
           </button>
         </div>
         {!isOnline && (
-          <Link to='/login'>
-            <button type='button' className='btn mr-4'>
+          <Link to="/login">
+            <button
+              type="button"
+              className="btn bg-primary hover:bg-secondary border-secondary mr-4"
+            >
               Login
             </button>
           </Link>

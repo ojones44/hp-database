@@ -7,10 +7,51 @@
 @tailwind utilities;
 
 /* * ------------------------------------------------------ */
-/* * ↓↓↓ Custom Class ↓↓↓ */
+/* * ↓↓↓ Custom Classes ↓↓↓ */
 /* * ------------------------------------------------------ */
 
 body {
   margin: 0;
   min-height: 100%;
+}
+
+/* * ------------------------------------------------------ */
+/* * ↓↓↓ Tailwind @Apply Classes ↓↓↓ */
+/* * ------------------------------------------------------ */
+
+/* Register/Login form classes */
+.input-area {
+  @apply block border w-full p-3 rounded mb-4;
+}
+
+.input-area.password {
+  @apply block border w-80 p-3 rounded mb-4;
+}
+
+.input-area.adjusted {
+  @apply block border w-80 p-3 rounded mb-2;
+}
+
+.error-message {
+  @apply bg-red-100 border border-accent text-error px-4 py-3 mb-4 rounded relative;
+}
+
+.success-message {
+  @apply bg-green-100 border border-success text-success px-4 py-3 mb-4 rounded relative;
+}
+
+.info-message {
+  @apply flex items-center bg-secondary text-white text-sm px-4 py-3 mb-4 rounded relative;
+}
+
+.validation-message {
+  @apply mb-4 text-sm;
+}
+
+.button {
+  @apply w-full text-center py-3 rounded bg-success text-white hover:bg-secondary focus:outline-none my-1;
+}
+
+.link-to {
+  @apply no-underline border-b text-blue-600;
 }

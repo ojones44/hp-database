@@ -5,23 +5,22 @@ const mongoose = require("mongoose");
 // Destructuring mongooses Schema method into a const //
 const { Schema } = mongoose;
 
+const userData = {
+  fName: requiredString,
+  lName: requiredString,
+  employeeID: requiredUniqueNumber,
+  stampNo: requiredUniqueNumber,
+  email: requiredUniqueString,
+  password: requiredString,
+  jobRole: requiredString,
+  department: requiredString,
+  avatar: optionalString,
+};
+
 // Create new database schema using mongoose.Schema //
-const userSchema = new Schema(
-  {
-    employee: {
-      fName: requiredString,
-      lName: requiredString,
-      employeeId: requiredUniqueString,
-      email: requiredUniqueString,
-      // jobRole: String,
-      // department: String,
-      // username: requiredString,
-      // password: requiredString,
-      // avatar: String,
-    },
-  },
-  { timestamps: true }
-);
+const userSchema = new Schema(userData, {
+  timestamps: true,
+});
 
 // Create mongoose model from creating Schema //
 // Given name in first argument is always singular //

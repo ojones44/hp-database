@@ -14,24 +14,15 @@ const {
   deleteUser,
 } = require("../controllers/userController.cjs");
 
-// This file is entered from server.cjs when a filepath is hit //
-// It will then jump to the relevant router, and call one of the //
-// imported functions //
-
-// In this example, the router object has methods for handling
-// GET, POST, PUT, and DELETE requests to the specified path. These
-// routes can then be imported and used in the main app.
-
-// ? 🤪 Alternative refactored syntax //
-
-// ? router.route('/').get(getUsers).post(createUser);
-// ? router.route('/:id').put(updateUser).delete(deleteUser);
+// Import protected route function
+// Pass this as another arg in router.get() to protect with JWT
+const { protect } = require("../middleware/authMiddleware.cjs");
 
 // Calls the getUsers function inside userController.cjs //
 router.get("/", getUsers);
 
 // Calls the getMe function inside userController.cjs //
-router.get("/me", getMe);
+router.get("/me", protect, getMe);
 
 // Calls the registerUser function inside userController.cjs //
 router.post("/register", registerUser);
@@ -46,3 +37,11 @@ router.put("/:id", updateUser);
 router.delete("/:id", deleteUser);
 
 module.exports = router;
+
+// This file is entered from server.cjs when a filepath is hit //
+// It will then jump to the relevant router, and call one of the //
+// imported functions //
+
+// In this example, the router object has methods for handling
+// GET, POST, PUT, and DELETE requests to the specified path. These
+// routes can then be imported and used in the main app.
