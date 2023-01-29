@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const { requiredString, requiredUniqueString } = require("./modelTypes.cjs");
 const mongoose = require("mongoose");
 
 // Destructuring mongooses Schema method into a const //

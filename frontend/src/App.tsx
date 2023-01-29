@@ -8,7 +8,7 @@ import Scheduler from './react-frontend/pages/Scheduler';
 import Maintenance from './react-frontend/pages/Maintenance';
 import MachineCardSingle from './react-frontend/pages/MachineCardSingle';
 import NotFound from './react-frontend/pages/NotFound';
-import Footer from './react-frontend/pages/Footer';
+import Footer from './react-frontend/components/Footer';
 
 export function App() {
   const isLoggedIn = true;

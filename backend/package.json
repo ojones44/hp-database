@@ -5,7 +5,8 @@
   "main": "server.cjs",
   "scripts": {
     "start": "doppler run -- node server.cjs",
-    "server": "doppler run -- nodemon server.cjs"
+    "server": "doppler run -- nodemon server.cjs",
+    "format": "prettier --write ."
   },
   "author": "Oliver Jones & Rikie Patrick",
   "license": "MIT",

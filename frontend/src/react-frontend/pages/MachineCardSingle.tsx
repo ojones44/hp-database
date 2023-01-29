@@ -7,17 +7,17 @@ function MachineCardSingle() {
 
   if (!location.state) {
     return (
-      <div className="mx-auto card w-96 bg-base-100 shadow-xl">
-        <figure className="px-10 pt-10">
-          <img src={oopsImg} alt="hp300-img" className="rounded-xl" />
+      <div className='mx-auto card w-96 bg-base-100 shadow-xl'>
+        <figure className='px-10 pt-10'>
+          <img src={oopsImg} alt='hp300-img' className='rounded-xl' />
         </figure>
-        <div className="card-body items-center text-center">
-          <h2 className="card-title">
+        <div className='card-body items-center text-center'>
+          <h2 className='card-title'>
             Looks like you entered this URL manually 😉
           </h2>
-          <div className="card-actions">
-            <Link to="/">
-              <button type="button" className="btn btn-primary">
+          <div className='card-actions'>
+            <Link to='/'>
+              <button type='button' className='btn btn-primary'>
                 TAKE ME HOME
               </button>
             </Link>
@@ -33,15 +33,15 @@ function MachineCardSingle() {
   const { serial } = location.state.machine.details;
 
   return (
-    <div className="mx-auto card w-96 bg-base-100 shadow-xl">
-      <figure className="px-10 pt-10">
-        <img src={hp300Img} alt="hp300-img" className="rounded-xl" />
+    <div className='mx-auto card w-96 bg-base-100 shadow-xl'>
+      <figure className='px-10 pt-10'>
+        <img src={hp300Img} alt='hp300-img' className='rounded-xl' />
       </figure>
-      <div className="card-body items-center text-center">
-        <h2 className="card-title">{`${manufacturer} ${wc}`}</h2>
+      <div className='card-body items-center text-center'>
+        <h2 className='card-title'>{`${manufacturer} ${wc}`}</h2>
         <p>{`Model: ${model}   |   Serial: ${serial}`}</p>
-        <div className="card-actions">
-          <button type="button" className="btn btn-primary">
+        <div className='card-actions'>
+          <button type='button' className='btn btn-primary'>
             {`QUERY ${wc} DATABASE`}
           </button>
         </div>
